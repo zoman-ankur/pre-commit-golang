@@ -93,3 +93,11 @@
     files: '\.go$'
     language: 'script'
     description: "Runs `go mod vendor`, requires golang"
+-   id: go-group-imports
+    name: 'go group imports'
+    entry: run-go-group-imports.sh
+    files: '\.go$'
+    language: 'script'
+    description: >
+      Runs `gci write` with organisation-specific grouping rules, requires
+      https://github.com/daixiang0/gci
