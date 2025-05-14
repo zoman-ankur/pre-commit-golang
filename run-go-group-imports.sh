@@ -26,18 +26,18 @@ fi
 MOD_NAME=$(grep '^module' go.mod | awk '{print $2}')
 
 # Build the base argument list for gci.
-read -r -a GCI_ARGS <<EOF
-write
--s standard
--s default
--s prefix(github.com/Zomato/go)
--s prefix(${MOD_NAME}-client-golang)
--s prefix(${MOD_NAME}/internal)
--s prefix(${MOD_NAME}/pkg)
--s blank
--s dot
---skip-vendor
-EOF
+GCI_ARGS=(
+    write
+    -s standard
+    -s default
+    -s "prefix(github.com/Zomato/go)"
+    -s "prefix(${MOD_NAME}-client-golang)"
+    -s "prefix(${MOD_NAME}/internal)"
+    -s "prefix(${MOD_NAME}/pkg)"
+    -s blank
+    -s dot
+    --skip-vendor
+)
 
 # Determine whether to operate on provided files or the whole repository.
 if [[ "$#" -gt 0 ]]; then
